@@ -63,65 +63,73 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/weight_value"
+        android:id="@+id/num_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="172dp"
         android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/weightTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/num_value" />
+        app:layout_constraintStart_toEndOf="@+id/numberTV_id"
+        app:layout_constraintTop_toBottomOf="@+id/pokeName_id" />
 
     <TextView
         android:id="@+id/numberTV_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
-        android:layout_marginTop="223dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="172dp"
         android:text="@string/number"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/weightTV_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokeName_id" />
 
     <TextView
-        android:id="@+id/height_value"
+        android:id="@+id/ability_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/filler"
+        app:layout_constraintStart_toEndOf="@+id/ability_id"
+        app:layout_constraintTop_toBottomOf="@+id/move_value" />
+
+    <TextView
+        android:id="@+id/weight_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/heightTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/weight_value" />
-
-    <TextView
-        android:id="@+id/heightTV_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/height"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightTV_id" />
+        app:layout_constraintStart_toEndOf="@+id/weightTV_id"
+        app:layout_constraintTop_toBottomOf="@+id/num_value" />
 
     <TextView
         android:id="@+id/weightTV_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="20dp"
         android:text="@string/weight"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberTV_id" />
 
     <TextView
+        android:id="@+id/heightTV_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/height"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightTV_id" />
+
+    <TextView
         android:id="@+id/baseTV_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
+        android:layout_marginStart="248dp"
         android:layout_marginTop="20dp"
         android:text="@string/basexp"
         android:textStyle="bold"
@@ -129,25 +137,66 @@
         app:layout_constraintTop_toBottomOf="@+id/heightTV_id" />
 
     <TextView
-        android:id="@+id/num_value"
+        android:id="@+id/move_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="223dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/move"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/listview_id"
+        app:layout_constraintTop_toBottomOf="@+id/baseTV_id" />
+
+    <TextView
+        android:id="@+id/ability_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/ability"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/listview_id"
+        app:layout_constraintTop_toBottomOf="@+id/move_id" />
+
+    <TextView
+        android:id="@+id/height_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:text="@string/filler"
-        app:layout_constraintBottom_toTopOf="@+id/weight_value"
-        app:layout_constraintStart_toEndOf="@+id/numberTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/pokeName_id" />
+        app:layout_constraintStart_toEndOf="@+id/heightTV_id"
+        app:layout_constraintTop_toBottomOf="@+id/weight_value" />
+
+    <TextView
+        android:id="@+id/move_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/filler"
+        app:layout_constraintStart_toEndOf="@+id/move_id"
+        app:layout_constraintTop_toBottomOf="@+id/base_value" />
 
     <TextView
         android:id="@+id/base_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:text="@string/filler"
         app:layout_constraintStart_toEndOf="@+id/baseTV_id"
         app:layout_constraintTop_toBottomOf="@+id/height_value" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokeName_id"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
