@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     TextView name, number, weight, height, base_xp, move, ability;
     String url = "https://pokeapi.co/api/v2/pokemon/";
 
+    //updates listview
     AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -59,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener enterButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //retrieves the inputted text
+            pokemon = search.getText().toString();
+
             for (int i = 0; i < pokemon.length(); i++){
+                //validates entry
                 if((Character.isLetter(pokemon.charAt(i)) == false)) {
                     if(!pokemon.contains("%") && !pokemon.contains("&") && !pokemon.contains("*")
                             && !pokemon.contains("(") && !pokemon.contains("@") &&
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         listview = findViewById(R.id.listview_id);
         imageView = findViewById(R.id.imageView);
 
+        //resizes the image view
         int newWidth = 200;
         int newHeight = 200;
         ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.height = newHeight;
         imageView.setLayoutParams(layoutParams);
 
-        pokemon = search.getText().toString();
+
 
         enterButton.setOnClickListener(enterButtonListener);
         listview.setOnItemClickListener(clickListener);
@@ -110,10 +116,11 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
         pokeList.add("bulbasaur");
         pokeList.add("eevee");
-        makeReq("ditto");
+        makeReq("pikachu");
 
     }
 
+    //handles the request to the api based on inputted pokemon
     public void makeReq(String poke){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         url += poke.toLowerCase();
@@ -121,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-//                    JSONArray jsonArray = response.getJSONArray("1");
                     String numberD = String.valueOf(response.getInt("id"));
                     String heightD = String.valueOf(response.getInt("height"));
                     String weightD = String.valueOf(response.getInt("weight"));
