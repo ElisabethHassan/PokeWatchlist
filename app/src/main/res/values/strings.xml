@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PokeWatchlist</string>
+    <string name="search">Search</string>
+    <string name="hint">pikachu</string>
+    <string name="headline">Search a Pokemon!</string>
+    <string name="name">PIKACHU</string>
+    <string name="number">Number</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="basexp">Base XP</string>
+    <string name="filler">100</string>
+</resources>
