@@ -39,11 +39,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     ListView listview;
     ImageView imageView;
+//    LinkedList<Pokemon> pokeList = new LinkedList<>();
     LinkedList<String> pokeList = new LinkedList<>();
     EditText search;
-    Button enterButton;
-    String pokemon;
-    ArrayAdapter<String> adapter;
+    Button enterButton, clearButton;
+//    String pokemon;
+ArrayAdapter<String> adapter;
+//    ArrayAdapter<Pokemon> adapter;
     TextView name, number, weight, height, base_xp, move, ability;
     String url = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -53,7 +55,13 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             String poke = (String) adapterView.getItemAtPosition(i);
             makeReq(poke);
+        }
+    };
 
+    View.OnClickListener clearListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            clear();
         }
     };
 
@@ -61,31 +69,40 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //retrieves the inputted text
-            pokemon = search.getText().toString();
+            String pokemon = search.getText().toString();
+            Toast.makeText(getApplicationContext(), pokemon, Toast.LENGTH_LONG).show();
 
             for (int i = 0; i < pokemon.length(); i++){
                 //validates entry
-                if((Character.isLetter(pokemon.charAt(i)) == false)) {
+                if((Character.isLetter(pokemon.charAt(i)) == true)) {
                     if(!pokemon.contains("%") && !pokemon.contains("&") && !pokemon.contains("*")
                             && !pokemon.contains("(") && !pokemon.contains("@") &&
                             !pokemon.contains("!") && !pokemon.contains(";") && !pokemon.contains(":")
                             && !pokemon.contains("<>")       ){
                         makeReq(pokemon);
-                        pokeList.add(pokemon);
                     }
                 } else if (Integer.parseInt(pokemon) > 0 && Integer.parseInt(pokemon) < 1010){
                     makeReq(pokemon);
-                    pokeList.add(pokemon);
                 } else Toast.makeText(getApplicationContext(), "This input is invalid.", Toast.LENGTH_LONG).show();
             }
+
         }
     };
+
+    public void clear(){
+        height.setText("--");
+        weight.setText("--");
+        number.setText("--");
+        base_xp.setText("--");
+        name.setText("-----");
+        ability.setText("--");
+        move.setText("--");
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AndroidNetworking.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
         name = findViewById(R.id.pokeName_id);
@@ -99,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         search = findViewById(R.id.searchET_id);
         listview = findViewById(R.id.listview_id);
         imageView = findViewById(R.id.imageView);
+        clearButton = findViewById(R.id.clear_button);
 
         //resizes the image view
         int newWidth = 200;
@@ -108,16 +126,18 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.height = newHeight;
         imageView.setLayoutParams(layoutParams);
 
-
-
+        clearButton.setOnClickListener(clearListener);
         enterButton.setOnClickListener(enterButtonListener);
         listview.setOnItemClickListener(clickListener);
+
         adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, pokeList);
+//        PokeAdapater adapter = new PokeAdapater(this, R.layout.listview_layout, pokeList);
         listview.setAdapter(adapter);
         pokeList.add("bulbasaur");
-        pokeList.add("eevee");
+        pokeList.add("evee");
+//        pokeList.add(new Pokemon("bulbasaur", "1"));
+//        pokeList.add(new Pokemon("eevee", "133"));
         makeReq("pikachu");
-
     }
 
     //handles the request to the api based on inputted pokemon
@@ -143,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
                     name.setText(nameD.toUpperCase());
                     ability.setText(abilityD);
                     move.setText(moveD);
+                    pokeList.add(nameD);
+//                    pokeList.add(new Pokemon(nameD, numberD));
+//                    adapter.notifyDataSetChanged();
                     if(response.getInt("id") < 10){
                         String url = "https://github.com/HybridShivam/Pokemon/blob/master/assets/images/00" + numberD + ".png?raw=true";
                         Picasso.get().load(url).into(imageView);
@@ -165,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         queue.add(request);
-
+//        adapter.notifyDataSetChanged();
     }
 
 
