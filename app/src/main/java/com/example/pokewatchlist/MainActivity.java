@@ -39,13 +39,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     ListView listview;
     ImageView imageView;
-//    LinkedList<Pokemon> pokeList = new LinkedList<>();
     LinkedList<String> pokeList = new LinkedList<>();
     EditText search;
     Button enterButton, clearButton, clearLButton;
-//    String pokemon;
     ArrayAdapter<String> adapter;
-//    ArrayAdapter<Pokemon> adapter;
     TextView name, number, weight, height, base_xp, move, ability;
     String url = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -79,12 +76,15 @@ public class MainActivity extends AppCompatActivity {
             //retrieves the inputted text
             String pokemon = search.getText().toString();
             Toast.makeText(getApplicationContext(), pokemon, Toast.LENGTH_LONG).show();
-            boolean isLetter = false;
+            boolean isLetter = true;
+            boolean isNumber = true;
 
             //validates entry
             for (int i = 0; i < pokemon.length(); i++){
                 if (Character.isLetter(pokemon.charAt(i)) == true) {
-                    isLetter = true;
+                    isLetter = false;
+                } else if (Character.isDigit(pokemon.charAt(i)) == true) {
+                    isNumber = false;
                 }
             }
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     !pokemon.contains("!") && !pokemon.contains(";") && !pokemon.contains(":")
                     && !pokemon.contains("<>") && isLetter == true){
                 makeReq(pokemon);
-            } else if (Integer.parseInt(pokemon) > 0 && Integer.parseInt(pokemon) < 1010){
+            } else if (isNumber == true && Integer.parseInt(pokemon) > 0 && Integer.parseInt(pokemon) < 1010){
                 makeReq(pokemon);
             } else Toast.makeText(getApplicationContext(), "This input is invalid.", Toast.LENGTH_LONG).show();
 
@@ -148,12 +148,9 @@ public class MainActivity extends AppCompatActivity {
         listview.setOnItemClickListener(clickListener);
 
         adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, pokeList);
-//        PokeAdapater adapter = new PokeAdapater(this, R.layout.listview_layout, pokeList);
         listview.setAdapter(adapter);
         pokeList.add("bulbasaur");
         pokeList.add("eevee");
-//        pokeList.add(new Pokemon("bulbasaur", "1"));
-//        pokeList.add(new Pokemon("eevee", "133"));
         makeReq("pikachu");
     }
 
@@ -180,9 +177,8 @@ public class MainActivity extends AppCompatActivity {
                     name.setText(nameD.toUpperCase());
                     ability.setText(abilityD);
                     move.setText(moveD);
-                    //prevents duplicates
-                    if(!pokeList.contains(nameD)) pokeList.add(nameD);
-//                    pokeList.add(new Pokemon(nameD, numberD));
+
+                    if(!pokeList.contains(nameD)) pokeList.add(nameD); //prevents duplicates
                     adapter.notifyDataSetChanged();
                     if(response.getInt("id") < 10){
                         String url = "https://github.com/HybridShivam/Pokemon/blob/master/assets/images/00" + numberD + ".png?raw=true";
@@ -196,7 +192,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } catch (JSONException e) {
-                    throw new RuntimeException(e);
+                    Toast.makeText(getApplicationContext(),"Error on getting data ", Toast.LENGTH_LONG).show();
+//                    throw new RuntimeException(e);
                 }
             }
         }, new Response.ErrorListener() {
@@ -206,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         queue.add(request);
-//        adapter.notifyDataSetChanged();
     }
 
 
