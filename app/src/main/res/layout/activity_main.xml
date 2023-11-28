@@ -7,208 +7,229 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/searchButton_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="268dp"
-        android:text="@string/search"
+    <ScrollView
+        android:layout_width="411dp"
+        android:layout_height="731dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchET_id" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ListView
-        android:id="@+id/listview_id"
-        android:layout_width="162dp"
-        android:layout_height="421dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="224dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchButton_id" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/headline_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="216dp"
-        android:text="@string/headline"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/searchButton_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="115dp"
+                android:text="@string/search"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/searchET_id" />
 
-    <EditText
-        android:id="@+id/searchET_id"
-        android:layout_width="141dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="240dp"
-        android:ems="10"
-        android:hint="@string/hint"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ListView
+                android:id="@+id/listview_id"
+                android:layout_width="162dp"
+                android:layout_height="421dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toStartOf="@+id/numberTV_id"
+                app:layout_constraintTop_toBottomOf="@+id/searchButton_id" />
 
-    <TextView
-        android:id="@+id/pokeName_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="44dp"
-        android:text="@string/name"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/headline_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="59dp"
+                android:layout_marginEnd="215dp"
+                android:text="@string/headline"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/num_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="172dp"
-        android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/numberTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/pokeName_id" />
+            <EditText
+                android:id="@+id/searchET_id"
+                android:layout_width="141dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="89dp"
+                android:ems="10"
+                android:hint="@string/hint"
+                android:inputType="text"
+                app:layout_constraintEnd_toStartOf="@+id/pokeName_id"
+                app:layout_constraintTop_toBottomOf="@+id/headline_id" />
 
-    <TextView
-        android:id="@+id/numberTV_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="172dp"
-        android:text="@string/number"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokeName_id" />
+            <TextView
+                android:id="@+id/pokeName_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="107dp"
+                android:layout_marginEnd="44dp"
+                android:text="@string/name"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ability_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/ability_id"
-        app:layout_constraintTop_toBottomOf="@+id/move_value" />
+            <TextView
+                android:id="@+id/num_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="52dp"
+                android:text="@string/filler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/weight_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/weightTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/num_value" />
+            <TextView
+                android:id="@+id/numberTV_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="36dp"
+                android:text="@string/number"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/num_value"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/weightTV_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/weight"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberTV_id" />
+            <TextView
+                android:id="@+id/ability_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="54dp"
+                android:text="@string/filler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/move_value" />
 
-    <TextView
-        android:id="@+id/heightTV_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/height"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightTV_id" />
+            <TextView
+                android:id="@+id/weight_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="54dp"
+                android:text="@string/filler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/num_value" />
 
-    <TextView
-        android:id="@+id/baseTV_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/basexp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightTV_id" />
+            <TextView
+                android:id="@+id/weightTV_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="40dp"
+                android:text="@string/weight"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/weight_value"
+                app:layout_constraintTop_toBottomOf="@+id/numberTV_id" />
 
-    <TextView
-        android:id="@+id/move_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/move"
-        android:textAlignment="viewStart"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/listview_id"
-        app:layout_constraintTop_toBottomOf="@+id/baseTV_id" />
+            <TextView
+                android:id="@+id/heightTV_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="40dp"
+                android:text="@string/height"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/height_value"
+                app:layout_constraintTop_toBottomOf="@+id/weightTV_id" />
 
-    <TextView
-        android:id="@+id/ability_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/ability"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/listview_id"
-        app:layout_constraintTop_toBottomOf="@+id/move_id" />
+            <TextView
+                android:id="@+id/baseTV_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/basexp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/base_value"
+                app:layout_constraintTop_toBottomOf="@+id/heightTV_id" />
 
-    <TextView
-        android:id="@+id/height_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/heightTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/weight_value" />
+            <TextView
+                android:id="@+id/move_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="52dp"
+                android:text="@string/move"
+                android:textAlignment="viewStart"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/move_value"
+                app:layout_constraintTop_toBottomOf="@+id/baseTV_id" />
 
-    <TextView
-        android:id="@+id/move_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/move_id"
-        app:layout_constraintTop_toBottomOf="@+id/base_value" />
+            <TextView
+                android:id="@+id/ability_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="44dp"
+                android:text="@string/ability"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/ability_value"
+                app:layout_constraintTop_toBottomOf="@+id/move_id" />
 
-    <TextView
-        android:id="@+id/base_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/filler"
-        app:layout_constraintStart_toEndOf="@+id/baseTV_id"
-        app:layout_constraintTop_toBottomOf="@+id/height_value" />
+            <TextView
+                android:id="@+id/height_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="57dp"
+                android:text="@string/filler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weight_value" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokeName_id"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+            <TextView
+                android:id="@+id/move_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="52dp"
+                android:text="@string/filler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/base_value" />
 
-    <Button
-        android:id="@+id/clear_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="75dp"
-        android:text="@string/clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ability_id" />
+            <TextView
+                android:id="@+id/base_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="54dp"
+                android:text="@string/filler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/height_value" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="44dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pokeName_id"
+                app:srcCompat="@drawable/ic_launcher_foreground" />
+
+            <Button
+                android:id="@+id/clear_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="44dp"
+                android:text="@string/clear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ability_id" />
+
+            <Button
+                android:id="@+id/clearL_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="57dp"
+                android:text="@string/clearL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clear_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

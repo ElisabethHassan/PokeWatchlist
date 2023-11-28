@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 //    LinkedList<Pokemon> pokeList = new LinkedList<>();
     LinkedList<String> pokeList = new LinkedList<>();
     EditText search;
-    Button enterButton, clearButton;
+    Button enterButton, clearButton, clearLButton;
 //    String pokemon;
-ArrayAdapter<String> adapter;
+    ArrayAdapter<String> adapter;
 //    ArrayAdapter<Pokemon> adapter;
     TextView name, number, weight, height, base_xp, move, ability;
     String url = "https://pokeapi.co/api/v2/pokemon/";
@@ -65,26 +65,37 @@ ArrayAdapter<String> adapter;
         }
     };
 
+    View.OnClickListener clearListListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            clearData();
+            adapter.notifyDataSetChanged();
+        }
+    };
+
     View.OnClickListener enterButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //retrieves the inputted text
             String pokemon = search.getText().toString();
             Toast.makeText(getApplicationContext(), pokemon, Toast.LENGTH_LONG).show();
+            boolean isLetter = false;
 
+            //validates entry
             for (int i = 0; i < pokemon.length(); i++){
-                //validates entry
-                if((Character.isLetter(pokemon.charAt(i)) == true)) {
-                    if(!pokemon.contains("%") && !pokemon.contains("&") && !pokemon.contains("*")
-                            && !pokemon.contains("(") && !pokemon.contains("@") &&
-                            !pokemon.contains("!") && !pokemon.contains(";") && !pokemon.contains(":")
-                            && !pokemon.contains("<>")       ){
-                        makeReq(pokemon);
-                    }
-                } else if (Integer.parseInt(pokemon) > 0 && Integer.parseInt(pokemon) < 1010){
-                    makeReq(pokemon);
-                } else Toast.makeText(getApplicationContext(), "This input is invalid.", Toast.LENGTH_LONG).show();
+                if (Character.isLetter(pokemon.charAt(i)) == true) {
+                    isLetter = true;
+                }
             }
+
+            if(!pokemon.contains("%") && !pokemon.contains("&") && !pokemon.contains("*")
+                    && !pokemon.contains("(") && !pokemon.contains("@") &&
+                    !pokemon.contains("!") && !pokemon.contains(";") && !pokemon.contains(":")
+                    && !pokemon.contains("<>") && isLetter == true){
+                makeReq(pokemon);
+            } else if (Integer.parseInt(pokemon) > 0 && Integer.parseInt(pokemon) < 1010){
+                makeReq(pokemon);
+            } else Toast.makeText(getApplicationContext(), "This input is invalid.", Toast.LENGTH_LONG).show();
 
         }
     };
@@ -99,6 +110,10 @@ ArrayAdapter<String> adapter;
         move.setText("--");
     }
 
+    public void clearData(){
+        pokeList.clear();
+        Toast.makeText(getApplicationContext(), "List was cleared successfully.", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +132,7 @@ ArrayAdapter<String> adapter;
         listview = findViewById(R.id.listview_id);
         imageView = findViewById(R.id.imageView);
         clearButton = findViewById(R.id.clear_button);
+        clearLButton = findViewById(R.id.clearL_button);
 
         //resizes the image view
         int newWidth = 200;
@@ -127,6 +143,7 @@ ArrayAdapter<String> adapter;
         imageView.setLayoutParams(layoutParams);
 
         clearButton.setOnClickListener(clearListener);
+        clearLButton.setOnClickListener(clearListListener);
         enterButton.setOnClickListener(enterButtonListener);
         listview.setOnItemClickListener(clickListener);
 
@@ -134,7 +151,7 @@ ArrayAdapter<String> adapter;
 //        PokeAdapater adapter = new PokeAdapater(this, R.layout.listview_layout, pokeList);
         listview.setAdapter(adapter);
         pokeList.add("bulbasaur");
-        pokeList.add("evee");
+        pokeList.add("eevee");
 //        pokeList.add(new Pokemon("bulbasaur", "1"));
 //        pokeList.add(new Pokemon("eevee", "133"));
         makeReq("pikachu");
@@ -143,8 +160,8 @@ ArrayAdapter<String> adapter;
     //handles the request to the api based on inputted pokemon
     public void makeReq(String poke){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        url += poke.toLowerCase();
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String p =  poke.toLowerCase();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://pokeapi.co/api/v2/pokemon/" + p, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -163,9 +180,10 @@ ArrayAdapter<String> adapter;
                     name.setText(nameD.toUpperCase());
                     ability.setText(abilityD);
                     move.setText(moveD);
-                    pokeList.add(nameD);
+                    //prevents duplicates
+                    if(!pokeList.contains(nameD)) pokeList.add(nameD);
 //                    pokeList.add(new Pokemon(nameD, numberD));
-//                    adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
                     if(response.getInt("id") < 10){
                         String url = "https://github.com/HybridShivam/Pokemon/blob/master/assets/images/00" + numberD + ".png?raw=true";
                         Picasso.get().load(url).into(imageView);

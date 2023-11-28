@@ -11,5 +11,6 @@
     <string name="filler">100</string>
     <string name="move">Move</string>
     <string name="ability">Ability</string>
-    <string name="clear">Clear</string>
+    <string name="clear">Clear Profile</string>
+    <string name="clearL">Clear List</string>
 </resources>
