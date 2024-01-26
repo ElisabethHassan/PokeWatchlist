@@ -1,6 +1,6 @@
 # Pokemon Watchlist
 
-This program is for the ultimate pokemon fan. It allows users to look up pokemon by their name or ID number and returns the pokemon's profile. The pokemon information (photo, base_xp, abilities, etc.) is displayed using data from PokeApi (https://pokeapi.co/). 
+This program is for the ultimate pokemon fan. It allows users to look up pokemon by their name or ID number and returns the pokemon's profile. The pokemon information (national number, base_xp, abilities, etc.) is displayed using data from PokeApi (https://pokeapi.co/). 
 
 ## Features 
 
